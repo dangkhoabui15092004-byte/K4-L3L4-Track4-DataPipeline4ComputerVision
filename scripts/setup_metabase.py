@@ -7,11 +7,12 @@ Idempotent: if the dashboard exists it is left alone. Uses only the standard lib
 """
 import json
 import sys
+import os
 import time
 import urllib.error
 import urllib.request
 
-MB = "http://localhost:3000"
+MB = os.getenv("METABASE_URL", "http://metabase:3000" if os.path.exists("/.dockerenv") else "http://localhost:3000")
 USER = {"email": "lab@example.com", "password": "Day9-lab-pass!", "first_name": "Lab", "last_name": "User"}
 
 
